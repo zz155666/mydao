@@ -38,7 +38,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleDO> list() {
-        List<RoleDO> roles = roleMapper.list(new HashMap<>(16));
+        List<RoleDO> roles = roleMapper.list(new HashMap<String, Object>(16));
         return roles;
     }
 
@@ -46,7 +46,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RoleDO> list(Long userId) {
         List<Long> rolesIds = userRoleMapper.listRoleId(userId);
-        List<RoleDO> roles = roleMapper.list(new HashMap<>(16));
+        List<RoleDO> roles = roleMapper.list(new HashMap<String, Object>(16));
         for (RoleDO roleDO : roles) {
             roleDO.setRoleSign("false");
             for (Long roleId : rolesIds) {
@@ -64,7 +64,7 @@ public class RoleServiceImpl implements RoleService {
         int count = roleMapper.save(role);
         List<Long> menuIds = role.getMenuIds();
         Long roleId = role.getRoleId();
-        List<RoleMenuDO> rms = new ArrayList<>();
+        List<RoleMenuDO> rms = new ArrayList<RoleMenuDO>();
         for (Long menuId : menuIds) {
             RoleMenuDO rmDo = new RoleMenuDO();
             rmDo.setRoleId(roleId);
@@ -99,7 +99,7 @@ public class RoleServiceImpl implements RoleService {
         List<Long> menuIds = role.getMenuIds();
         Long roleId = role.getRoleId();
         roleMenuMapper.removeByRoleId(roleId);
-        List<RoleMenuDO> rms = new ArrayList<>();
+        List<RoleMenuDO> rms = new ArrayList<RoleMenuDO>();
         for (Long menuId : menuIds) {
             RoleMenuDO rmDo = new RoleMenuDO();
             rmDo.setRoleId(roleId);

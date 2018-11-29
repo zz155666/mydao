@@ -36,7 +36,7 @@ public class MenuServiceImpl implements MenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
-			Map<String, Object> attributes = new HashMap<>(16);
+			Map<String, Object> attributes = new HashMap<String, Object>(16);
 			attributes.put("url", sysMenuDO.getUrl());
 			attributes.put("icon", sysMenuDO.getIcon());
 			tree.setAttributes(attributes);
@@ -82,7 +82,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public Tree<MenuDO> getTree() {
 		List<Tree<MenuDO>> trees = new ArrayList<Tree<MenuDO>>();
-		List<MenuDO> menuDOs = menuMapper.list(new HashMap<>(16));
+		List<MenuDO> menuDOs = menuMapper.list(new HashMap<String, Object>(16));
 		for (MenuDO sysMenuDO : menuDOs) {
 			Tree<MenuDO> tree = new Tree<MenuDO>();
 			tree.setId(sysMenuDO.getMenuId().toString());
@@ -113,7 +113,7 @@ public class MenuServiceImpl implements MenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
-			Map<String, Object> state = new HashMap<>(16);
+			Map<String, Object> state = new HashMap<String, Object>(16);
 			Long menuId = sysMenuDO.getMenuId();
 			if (menuIds.contains(menuId)) {
 				state.put("selected", true);
@@ -131,7 +131,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public Set<String> listPerms(Long userId) {
 		List<String> perms = menuMapper.listUserPerms(userId);
-		Set<String> permsSet = new HashSet<>();
+		Set<String> permsSet = new HashSet<String>();
 		for (String perm : perms) {
 			if (StringUtils.isNotBlank(perm)) {
 				permsSet.addAll(Arrays.asList(perm.trim().split(",")));
@@ -149,7 +149,7 @@ public class MenuServiceImpl implements MenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
-			Map<String, Object> attributes = new HashMap<>(16);
+			Map<String, Object> attributes = new HashMap<String, Object>(16);
 			attributes.put("url", sysMenuDO.getUrl());
 			attributes.put("icon", sysMenuDO.getIcon());
 			tree.setAttributes(attributes);

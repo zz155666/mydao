@@ -26,7 +26,7 @@ public class LogServiceImpl implements LogService {
 	public PageDO<LogDO> queryList(Query query) {
 		int total = logMapper.count(query);
 		List<LogDO> logs = logMapper.list(query);
-		PageDO<LogDO> page = new PageDO<>();
+		PageDO<LogDO> page = new PageDO<LogDO>();
 		page.setTotal(total);
 		page.setRows(logs);
 		return page;

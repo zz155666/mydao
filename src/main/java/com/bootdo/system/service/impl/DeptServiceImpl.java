@@ -65,7 +65,7 @@ public class DeptServiceImpl implements DeptService {
 			tree.setId(sysDept.getDeptId().toString());
 			tree.setParentId(sysDept.getParentId().toString());
 			tree.setText(sysDept.getName());
-			Map<String, Object> state = new HashMap<>(16);
+			Map<String, Object> state = new HashMap<String, Object>(16);
 			state.put("opened", true);
 			tree.setState(state);
 			trees.add(tree);

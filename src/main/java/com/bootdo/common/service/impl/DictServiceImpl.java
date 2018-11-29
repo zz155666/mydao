@@ -72,7 +72,7 @@ public class DictServiceImpl implements DictService {
 
     @Override
     public List<DictDO> getHobbyList(UserDO userDO) {
-        Map<String, Object> param = new HashMap<>(16);
+        Map<String, Object> param = new HashMap<String, Object>(16);
         param.put("type", "hobby");
         List<DictDO> hobbyList = dictDao.list(param);
 
@@ -94,14 +94,14 @@ public class DictServiceImpl implements DictService {
 
     @Override
     public List<DictDO> getSexList() {
-        Map<String, Object> param = new HashMap<>(16);
+        Map<String, Object> param = new HashMap<String, Object>(16);
         param.put("type", "sex");
         return dictDao.list(param);
     }
 
     @Override
     public List<DictDO> listByType(String type) {
-        Map<String, Object> param = new HashMap<>(16);
+        Map<String, Object> param = new HashMap<String, Object>(16);
         param.put("type", type);
         return dictDao.list(param);
     }

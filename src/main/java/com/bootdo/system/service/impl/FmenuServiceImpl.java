@@ -35,7 +35,7 @@ public class FmenuServiceImpl implements FmenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
-			Map<String, Object> attributes = new HashMap<>(16);
+			Map<String, Object> attributes = new HashMap<String, Object>(16);
 			attributes.put("url", sysMenuDO.getUrl());
 			attributes.put("icon", sysMenuDO.getIcon());
 			tree.setAttributes(attributes);
@@ -49,7 +49,7 @@ public class FmenuServiceImpl implements FmenuService {
 	@Override
 	public Tree<FmenuDO> getTree() {
 		List<Tree<FmenuDO>> trees = new ArrayList<Tree<FmenuDO>>();
-		List<FmenuDO> menuDOs = menuMapper.list(new HashMap<>(16));
+		List<FmenuDO> menuDOs = menuMapper.list(new HashMap<String, Object>(16));
 		for (FmenuDO sysMenuDO : menuDOs) {
 			Tree<FmenuDO> tree = new Tree<FmenuDO>();
 			tree.setId(sysMenuDO.getMenuId().toString());
@@ -80,7 +80,7 @@ public class FmenuServiceImpl implements FmenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
-			Map<String, Object> state = new HashMap<>(16);
+			Map<String, Object> state = new HashMap<String, Object>(16);
 			Long menuId = sysMenuDO.getMenuId();
 			if (menuIds.contains(menuId)) {
 				state.put("selected", true);

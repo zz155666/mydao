@@ -19,9 +19,9 @@ public class PageDO<T> {
 		this.offset = 0;
 		this.limit = 10;
 		this.total = 1;
-		this.params = new HashMap<>();
+		this.params = new HashMap<String, Object>();
 		this.param = "";
-		this.rows = new ArrayList<>();
+		this.rows = new ArrayList<T>();
 	}
 
 	public int getOffset() {

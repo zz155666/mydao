@@ -32,7 +32,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public List<UserOnline> list() {
-        List<UserOnline> list = new ArrayList<>();
+        List<UserOnline> list = new ArrayList<UserOnline>();
         Collection<Session> sessions = sessionDAO.getActiveSessions();
         for (Session session : sessions) {
             UserOnline userOnline = new UserOnline();
@@ -56,7 +56,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public List<UserDO> listOnlineUser() {
-        List<UserDO> list = new ArrayList<>();
+        List<UserDO> list = new ArrayList<UserDO>();
         UserDO userDO;
         Collection<Session> sessions = sessionDAO.getActiveSessions();
         for (Session session : sessions) {
