@@ -13,7 +13,6 @@ import org.apache.commons.lang.WordUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
-import zxy.org.common.utils.DateUtils;
 
 import java.io.File;
 import java.io.IOException;
