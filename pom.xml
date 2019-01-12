@@ -115,12 +115,6 @@
             <version>2.9.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.bootdo</groupId>
-            <artifactId>MyCommon</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
         <!-- xss过滤组件 -->
         <dependency>
             <groupId>org.jsoup</groupId>
