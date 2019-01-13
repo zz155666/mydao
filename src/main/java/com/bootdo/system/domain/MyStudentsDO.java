@@ -1,5 +1,7 @@
 package com.bootdo.system.domain;
 
+import com.bootdo.common.utils.AesUtil;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,6 +25,9 @@ public class MyStudentsDO implements Serializable {
 	private String studentmail;
 	//邮箱密码
 	private String studentpwd;
+
+	//解密的邮箱密码
+	private String studentdecryptpwd;
 
 	/**
 	 * 设置：
@@ -72,4 +77,19 @@ public class MyStudentsDO implements Serializable {
 	public String getStudentpwd() {
 		return studentpwd;
 	}
+
+
+	/**
+	 * 设置：邮箱密码
+	 */
+	public void setStudentdecryptpwd(String studentpwd) {
+		this.studentdecryptpwd = AesUtil.decrypt(studentpwd);
+	}
+	/**
+	 * 获取：邮箱密码
+	 */
+	public String getstudentdecryptpwd() {
+		return studentdecryptpwd;
+	}
+
 }
