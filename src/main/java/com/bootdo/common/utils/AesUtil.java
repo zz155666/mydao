@@ -75,15 +75,15 @@ public class AesUtil {
             return new String(decryptedData, CODE_TYPE);
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
+            return "密码解析错误";
         }
     }
 
-//    public static void main(String[] args) {
-//
-//		System.out.println(AesUtil.encrypt("Lucky2019!"));
-//
-//        System.out.println(AesUtil.decrypt("xOEU5f6+SIp2Nu8QRpGCAA=="));
-//	}
+    public static void main(String[] args) {
+
+		System.out.println(AesUtil.encrypt("876f4s5r6g4rsg"));
+
+       System.out.println(AesUtil.decrypt("6GJsssMsVcVzynCJGgGO+Q=="));
+	}
 
 }

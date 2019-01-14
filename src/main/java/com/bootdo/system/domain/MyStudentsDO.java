@@ -82,14 +82,15 @@ public class MyStudentsDO implements Serializable {
 	/**
 	 * 设置：邮箱密码
 	 */
-	public void setStudentdecryptpwd(String studentpwd) {
-		this.studentdecryptpwd = AesUtil.decrypt(studentpwd);
+	public void setStudentdecryptpwd(String studentdecryptpwd) {
+		this.studentdecryptpwd = studentdecryptpwd;
 	}
 	/**
 	 * 获取：邮箱密码
 	 */
-	public String getstudentdecryptpwd() {
+	public String getStudentdecryptpwd() {
 		return studentdecryptpwd;
 	}
+
 
 }
