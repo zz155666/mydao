@@ -30,9 +30,9 @@ public class AesUtil {
     //加密类型
     public static final String AES_TYPE = "AES/ECB/PKCS5Padding";
     /**
-     *
-     * @param cleartext
-     * @return
+     *加密方法
+     * @param cleartext 需要加密的字符串
+     * @return  加密后的字符
      */
     public static String encrypt(String cleartext) {
 
@@ -59,8 +59,8 @@ public class AesUtil {
     /**
      * 解密
      *
-     * @param encrypted
-     * @return
+     * @param encrypted 已加密的字符串
+     * @return 解密后的字符串
      */
     public static String decrypt(String encrypted) {
         try {
