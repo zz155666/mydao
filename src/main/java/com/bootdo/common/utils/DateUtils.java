@@ -99,7 +99,20 @@ public class DateUtils {
     public static Date SetAmountDay(Date date,int amount){
         Calendar theCa = Calendar.getInstance();
         theCa.setTime(date);
-        theCa.add(theCa.DATE, amount);
+        theCa.add(Calendar.DATE, amount);
+        return theCa.getTime();
+    }
+
+    /**
+     * 计算出加减多少小时后的日期
+     * @param date
+     * @param amount
+     * @return
+     */
+    public static Date SetAmountHour(Date date,int amount){
+        Calendar theCa = Calendar.getInstance();
+        theCa.setTime(date);
+        theCa.add(Calendar.HOUR, amount);
         return theCa.getTime();
     }
 

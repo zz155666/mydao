@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author zhangxiangyu
  * @email z83@foxmail.com
- * @date 2019-01-15 15:08:23
+ * @date 2019-01-16 10:19:55
  */
 public class MyStudentsapplyDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +21,8 @@ public class MyStudentsapplyDO implements Serializable {
 	private String identityname;
 	//账号密码
 	private String identitypwd;
+	//解密的邮箱密码
+	private String studentdecryptpwd;
 	//所用邮箱
 	private String identitymail;
 	//申请网站
@@ -29,8 +31,13 @@ public class MyStudentsapplyDO implements Serializable {
 	private String remark;
 	//截止时间
 	private Date enddate;
+	private Date endlocaldate;
 	//关联学生id
 	private Long studentid;
+	//申请状态 0 账号申请完成 1 资料递交中 2 资料补齐 3 结项
+	private Integer applystate;
+	//申请国家 1 美国 2 英国
+	private Integer applycountry;
 
 	/**
 	 * 设置：
@@ -116,6 +123,19 @@ public class MyStudentsapplyDO implements Serializable {
 	public Date getEnddate() {
 		return enddate;
 	}
+
+	/**
+	 * 设置：
+	 */
+	public void setEndlocaldate(Date endlocaldate) {
+		this.endlocaldate = endlocaldate;
+	}
+	/**
+	 * 获取：
+	 */
+	public Date getEndlocaldate() {
+		return endlocaldate;
+	}
 	/**
 	 * 设置：关联学生id
 	 */
@@ -127,5 +147,42 @@ public class MyStudentsapplyDO implements Serializable {
 	 */
 	public Long getStudentid() {
 		return studentid;
+	}
+	/**
+	 * 设置：申请状态 0 账号申请完成 1 资料递交中 2 资料补齐 3 结项
+	 */
+	public void setApplystate(Integer applystate) {
+		this.applystate = applystate;
+	}
+	/**
+	 * 获取：申请状态 0 账号申请完成 1 资料递交中 2 资料补齐 3 结项
+	 */
+	public Integer getApplystate() {
+		return applystate;
+	}
+	/**
+	 * 设置：申请国家 1 美国 2 英国
+	 */
+	public void setApplycountry(Integer applycountry) {
+		this.applycountry = applycountry;
+	}
+	/**
+	 * 获取：申请国家 1 美国 2 英国
+	 */
+	public Integer getApplycountry() {
+		return applycountry;
+	}
+
+	/**
+	 * 设置：邮箱密码
+	 */
+	public void setStudentdecryptpwd(String studentdecryptpwd) {
+		this.studentdecryptpwd = studentdecryptpwd;
+	}
+	/**
+	 * 获取：邮箱密码
+	 */
+	public String getStudentdecryptpwd() {
+		return studentdecryptpwd;
 	}
 }
