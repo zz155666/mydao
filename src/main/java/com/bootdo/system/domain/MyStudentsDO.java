@@ -29,6 +29,9 @@ public class MyStudentsDO implements Serializable {
 	//解密的邮箱密码
 	private String studentdecryptpwd;
 
+	//学生申请状态（0 进行中  1 已完成）
+	private Integer applystate;
+
 	/**
 	 * 设置：
 	 */
@@ -91,6 +94,17 @@ public class MyStudentsDO implements Serializable {
 	public String getStudentdecryptpwd() {
 		return studentdecryptpwd;
 	}
-
+	/**
+	 * 设置：学生申请状态（0 进行中  1 已完成）
+	 */
+	public void setApplystate(Integer applystate) {
+		this.applystate = applystate;
+	}
+	/**
+	 * 获取：学生申请状态（0 进行中  1 已完成）
+	 */
+	public Integer getApplystate() {
+		return applystate;
+	}
 
 }
