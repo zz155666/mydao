@@ -1,8 +1,11 @@
 package com.bootdo.system.service.impl;
 
+import com.bootdo.system.dao.MyStudentsDao;
+import com.bootdo.system.domain.MyStudentsDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +19,9 @@ import com.bootdo.system.service.MyStudentsapplyService;
 public class MyStudentsapplyServiceImpl implements MyStudentsapplyService {
 	@Autowired
 	private MyStudentsapplyDao myStudentsapplyDao;
-	
+	@Autowired
+	private MyStudentsDao myStudentsDao;
+
 	@Override
 	public MyStudentsapplyDO get(Long id){
 		return myStudentsapplyDao.get(id);
@@ -34,6 +39,20 @@ public class MyStudentsapplyServiceImpl implements MyStudentsapplyService {
 	
 	@Override
 	public int save(MyStudentsapplyDO myStudentsapply){
+		int r=myStudentsapplyDao.save(myStudentsapply);
+		//查询申请记录时检查学生状态是否完成
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("id",myStudentsapply.getStudentid());
+		map.put("applystate",1);
+		List<MyStudentsDO> myStudentsDOList= myStudentsDao.list(map);
+		if(!myStudentsDOList.isEmpty()&&myStudentsDOList.size()>0){
+			for (MyStudentsDO myStudentsDO : myStudentsDOList){
+				MyStudentsDO mynew=new MyStudentsDO();
+				mynew.setId(myStudentsDO.getId());
+				mynew.setApplystate(0);
+				myStudentsDao.update(mynew);
+			}
+		}
 		return myStudentsapplyDao.save(myStudentsapply);
 	}
 	
