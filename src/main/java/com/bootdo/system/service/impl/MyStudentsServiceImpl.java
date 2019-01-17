@@ -34,6 +34,7 @@ public class MyStudentsServiceImpl implements MyStudentsService {
 	
 	@Override
 	public int save(MyStudentsDO myStudents){
+		myStudents.setApplystate(0);
 		return myStudentsDao.save(myStudents);
 	}
 	

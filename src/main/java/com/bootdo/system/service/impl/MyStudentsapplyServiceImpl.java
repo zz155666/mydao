@@ -40,17 +40,19 @@ public class MyStudentsapplyServiceImpl implements MyStudentsapplyService {
 	@Override
 	public int save(MyStudentsapplyDO myStudentsapply){
 		int r=myStudentsapplyDao.save(myStudentsapply);
-		//查询申请记录时检查学生状态是否完成
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("id",myStudentsapply.getStudentid());
-		map.put("applystate",1);
-		List<MyStudentsDO> myStudentsDOList= myStudentsDao.list(map);
-		if(!myStudentsDOList.isEmpty()&&myStudentsDOList.size()>0){
-			for (MyStudentsDO myStudentsDO : myStudentsDOList){
-				MyStudentsDO mynew=new MyStudentsDO();
-				mynew.setId(myStudentsDO.getId());
-				mynew.setApplystate(0);
-				myStudentsDao.update(mynew);
+		if(myStudentsapply.getApplystate()!=3){
+			//查询申请记录时检查学生状态是否完成
+			Map<String, Object> map=new HashMap<String, Object>();
+			map.put("id",myStudentsapply.getStudentid());
+			map.put("applystate",1);
+			List<MyStudentsDO> myStudentsDOList= myStudentsDao.list(map);
+			if(!myStudentsDOList.isEmpty()&&myStudentsDOList.size()>0){
+				for (MyStudentsDO myStudentsDO : myStudentsDOList){
+					MyStudentsDO mynew=new MyStudentsDO();
+					mynew.setId(myStudentsDO.getId());
+					mynew.setApplystate(0);
+					myStudentsDao.update(mynew);
+				}
 			}
 		}
 		return myStudentsapplyDao.save(myStudentsapply);
@@ -58,7 +60,43 @@ public class MyStudentsapplyServiceImpl implements MyStudentsapplyService {
 	
 	@Override
 	public int update(MyStudentsapplyDO myStudentsapply){
-		return myStudentsapplyDao.update(myStudentsapply);
+		int r=myStudentsapplyDao.update(myStudentsapply);
+		if(myStudentsapply.getApplystate()==3){
+
+			MyStudentsapplyDO myStudentsapplynew=myStudentsapplyDao.get(myStudentsapply.getId());
+
+			boolean isgon=true;
+
+			Map<String, Object> mapapply=new HashMap<String, Object>();
+			mapapply.put("studentid",myStudentsapplynew.getStudentid());
+			List<MyStudentsapplyDO> myStudentsapplyDOList= myStudentsapplyDao.list(mapapply);
+			if(!myStudentsapplyDOList.isEmpty()&&myStudentsapplyDOList.size()>0){
+				//检查学生名下申请是否都已完成
+				for (MyStudentsapplyDO myStudentsapplyDO : myStudentsapplyDOList){
+					if(myStudentsapplyDO.getApplystate()!=3){
+						isgon=false;
+						break;
+					}
+				}
+			}
+
+			if(isgon){
+				//查询申请记录时检查学生状态是否完成
+				Map<String, Object> map=new HashMap<String, Object>();
+				map.put("id",myStudentsapplynew.getStudentid());
+				map.put("applystate",0);
+				List<MyStudentsDO> myStudentsDOList= myStudentsDao.list(map);
+				if(!myStudentsDOList.isEmpty()&&myStudentsDOList.size()>0){
+					for (MyStudentsDO myStudentsDO : myStudentsDOList){
+						MyStudentsDO mynew=new MyStudentsDO();
+						mynew.setId(myStudentsDO.getId());
+						mynew.setApplystate(1);
+						myStudentsDao.update(mynew);
+					}
+				}
+			}
+		}
+		return r;
 	}
 	
 	@Override
