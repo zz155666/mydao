@@ -23,7 +23,7 @@ public class StufileuploadDO implements Serializable {
 	private Long tableid;
 	//
 	private Long fileid;
-	//1. 介绍信 2 简历 3 作品集
+	//0. 介绍信 1 简历 2 作品集  3 其它
 	private Integer filetype;
 
 	/**
