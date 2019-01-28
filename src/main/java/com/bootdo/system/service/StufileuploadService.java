@@ -1,5 +1,6 @@
 package com.bootdo.system.service;
 
+import com.bootdo.common.domain.FileDO;
 import com.bootdo.system.domain.StufileuploadDO;
 
 import java.util.List;
@@ -27,4 +28,6 @@ public interface StufileuploadService {
 	int remove(Long id);
 	
 	int batchRemove(Long[] ids);
+
+	List<FileDO> filelist(Map<String, Object> map);
 }

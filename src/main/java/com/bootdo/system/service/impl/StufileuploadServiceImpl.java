@@ -1,5 +1,6 @@
 package com.bootdo.system.service.impl;
 
+import com.bootdo.common.domain.FileDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,10 @@ public class StufileuploadServiceImpl implements StufileuploadService {
 	public int batchRemove(Long[] ids){
 		return stufileuploadDao.batchRemove(ids);
 	}
-	
+
+	@Override
+	public List<FileDO> filelist(Map<String, Object> map) {
+		return stufileuploadDao.filelist(map);
+	}
+
 }
