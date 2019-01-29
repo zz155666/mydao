@@ -58,7 +58,7 @@ public class StufileuploadServiceImpl implements StufileuploadService {
 	public List<FileDO> filelist(Map<String, Object> map) {
 		List<FileDO> fileDOList= stufileuploadDao.filelist(map);
 		for (FileDO file:fileDOList){
-			file.setUrl("http://"+ NetUtil.getLocalIP()+file.getUrl());
+			file.setUrl("http://58.87.96.9:8096"+file.getUrl());
 		}
 		return fileDOList;
 	}
