@@ -1,6 +1,7 @@
 package com.bootdo.system.service.impl;
 
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.utils.NetUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,11 @@ public class StufileuploadServiceImpl implements StufileuploadService {
 
 	@Override
 	public List<FileDO> filelist(Map<String, Object> map) {
-		return stufileuploadDao.filelist(map);
+		List<FileDO> fileDOList= stufileuploadDao.filelist(map);
+		for (FileDO file:fileDOList){
+			file.setUrl("http://"+ NetUtil.getLocalIP()+file.getUrl());
+		}
+		return fileDOList;
 	}
 
 }
